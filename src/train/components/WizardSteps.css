@@ -1,0 +1,17 @@
+    .flex {
+      /* flexbox setup */
+        display: flex;
+        flex-direction: row;
+    }
+
+    .flex > div {
+        flex: 1 1 auto;
+        width: 100px; 
+        transition: width 0.7s ease-out;
+    }
+
+    
+
+    .flex > div:hover {
+        width: 300px;
+    }
