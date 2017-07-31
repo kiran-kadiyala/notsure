@@ -1,5 +1,6 @@
 export type Train = {
   id?: number;
+  currentStep?:number;
   model?: string;
   dataSet?:string;
   projectName?:string;

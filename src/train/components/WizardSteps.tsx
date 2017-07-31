@@ -20,7 +20,7 @@ const style = {
 };
 
 interface StepProps {
-    onClick: (text: string) => void;
+    stepChanged: (index: number) => void;
     loading: boolean;
     finished: boolean;
     stepIndex: number;
@@ -58,11 +58,16 @@ class WizardSteps extends React.Component<StepProps, StepState> {
     handleNext = () => {
         const { stepIndex } = this.state;
         if (!this.state.loading) {
-            this.dummyAsync(() => this.setState({
-                loading: false,
-                stepIndex: stepIndex + 1,
-                finished: stepIndex >= 4,
-            }));
+            this.dummyAsync(() => {
+
+                this.setState({
+                    loading: false,
+                    stepIndex: stepIndex + 1,
+                    finished: stepIndex >= 4,
+                });
+
+                this.props.stepChanged(stepIndex);
+            });
         }
     };
 
@@ -83,10 +88,10 @@ class WizardSteps extends React.Component<StepProps, StepState> {
 
                     <div className="flex">
                         <Paper style={style} zDepth={5} rounded={false}>
-                            <div style={{marginTop:30}}>NEW PROJECT</div>
+                            <div style={{ marginTop: 30 }}>NEW PROJECT</div>
                         </Paper>
                         <Paper style={style} zDepth={5} rounded={false}>
-                            <div style={{marginTop:30}}>OPEN PROJECT</div>
+                            <div style={{ marginTop: 30 }}>OPEN PROJECT</div>
                         </Paper>
                     </div>
 

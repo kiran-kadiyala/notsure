@@ -2,6 +2,7 @@ import { handleActions, Action } from 'redux-actions';
 
 import { Train, IState } from './models';
 import {
+    STEP_CHANGED,
     PICK_PROJECT,
     NEXT,
     BACK,
@@ -12,6 +13,12 @@ import {
 const initialState: IState = [<Train>{ completed: false, id: 0 }];
 
 export default handleActions<IState, Train>({
+    [STEP_CHANGED] : (state: IState, action: Action<Train>): IState => {
+        return [{
+            id: 1,
+            currentStep: action.payload.currentStep
+        }, ...state];
+    },
     [PICK_PROJECT]: (state: IState, action: Action<Train>): IState => {
         return [{
             id: 0,

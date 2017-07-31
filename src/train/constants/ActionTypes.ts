@@ -1,3 +1,4 @@
+export const STEP_CHANGED = 'STEP_CHANGED';
 export const PICK_PROJECT = 'PICK_PROJECT';
 export const NEXT = 'NEXT_PAGE';
 export const BACK = 'PREVIOUS_PAGE';

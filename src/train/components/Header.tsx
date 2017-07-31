@@ -7,22 +7,26 @@ import { Train } from "../models";
 
 interface HeaderProps {
     arr: Train[];
-    selected: (text: string) => any;
+    selected: (index: number) => any;
 };
 
 class Header extends React.Component<HeaderProps, {}> {
-    handleClick(text: string) {
-        if (text.length !== 0) {
-            this.props.selected(text);
+    handleStepChanged(index: number) {
+        if (index !== 0) {
+            this.props.selected(index);
         }
     }
 
     render() {
+        const { arr } = this.props;
+
+        console.log("Array: " + arr);
+    
         return (
             <header className="header">
                 <AppBar />
                 <WizSteps stepIndex={0} loading={false} finished={false}
-                    onClick={this.handleClick.bind(this)}
+                    stepChanged={this.handleStepChanged.bind(this)}
                 />
             </header>
         );

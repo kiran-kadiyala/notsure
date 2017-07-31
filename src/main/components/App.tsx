@@ -5,7 +5,7 @@ import * as React from 'react';
 import {
   Header,
   model,
-  pickProject
+  stepChanged
 } from '../../train';
 
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
@@ -24,7 +24,7 @@ class App extends React.Component<AppProps, {}> {
     return (
       <div className="app">
         <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-          <Header arr={trainArr} selected={(text: string) => dispatch(pickProject(text))} />
+          <Header arr={trainArr} selected={(index: number) => dispatch(stepChanged(index))} />
         </MuiThemeProvider>
       </div>
     );
